@@ -1,3 +1,6 @@
+#Team Mozzy (Mo and Liz)
+#Project OOP Parking Garage
+
 # Here are some guidelines on constructing your Garage. Your Garage does not need to do exactly this.
 # BUT! It should be robust enough for the user to interact with as if they were entering and leaving a parking garage. 
 # - take_ticket
@@ -22,3 +25,5 @@
 class Parking_garage():
 
     def __init__():
+
+
