@@ -19,6 +19,90 @@
 # - parking_spaces -> list
 # - current_ticket -> dictionary
 
-class Parking_garage():
+from time import sleep
 
-    def __init__():
+class Parking_garage():
+    
+    print("\n")
+    print("Welcome to Mozzy Garage, where your car will be in great hands! ")
+
+    def __init__(self):
+        self.ticket_available = 20
+        self.parking_available = 20
+        self.current_ticket = {}
+
+    def take_ticket(self):
+        
+        if self.ticket_available == 0 and self.parking_available == 0:
+            print("Sorry! No parking available.")
+            return
+
+        else:
+            print("Thank you! Please take a Mozzy Ticket!")
+            self.current_ticket[self.ticket_available] = ""
+            print(f"Your ticket number is: {self.ticket_available}")
+            self.ticket_available -= 1
+            self.parking_available -= 1
+            print("Enjoy your Mozzy stay!")
+           
+            
+    def pay_ticket(self):
+
+        ticket_number = int(input("Please input your ticket number: "))
+        time = input("Plese enter how long was your stay? Enter '1' for less than 1 hour, '2' for less than 6 hours, or '3' for anything more than 6 hours: ")
+        if time == '1':
+            self.current_ticket[ticket_number] = 25
+        elif time == '2':
+            self.current_ticket[ticket_number] = 50
+        else:
+            self.current_ticket[ticket_number] = 75
+    
+        print("Your ticket price is:")
+        sleep(2)
+        print("....calculating....")
+        sleep(2)
+        print(f"${self.current_ticket[ticket_number]}! ")
+        while True:
+            paying = int(input(f"Please input dollar amount of {self.current_ticket[ticket_number]}:  $"))
+        
+            if paying != self.current_ticket[ticket_number]:
+                print("Please enter the correct amount given.")
+                continue
+            else: 
+                print("Thank you for paying an arm and leg!  You now have 15 mins to leave :D ")
+                self.current_ticket[ticket_number] = True
+                break
+
+
+    def leave_garage(self):
+       
+        parking_paid = int(input("Please enter your Mozzy Ticket number... pretty please! "))
+       
+        for key, value in self.current_ticket.items():
+            if key == parking_paid:
+                if value != True:
+                    print("You didnt pay your ticket yet")
+                    self.run()
+                else:
+                    print("Thank you for using Mozzy Garage!  Please come back again!")
+                    self.ticket_available += 1
+                    self.parking_available += 1
+                    # didnt put a self.run() here because we didnt want to keep them here forever 
+                    # ex: Hotel California where you can check out anytime you like, but you can never leave.....
+
+
+    def run(self):
+    
+        while True:
+            choice = input("What would you like to do?  Park / Pay ticket / Leave: ").lower()
+            if choice == "park":
+                park.take_ticket()
+            elif choice == "pay ticket":
+                park.pay_ticket()
+            elif choice == "leave":
+                park.leave_garage()
+                break
+
+
+park = Parking_garage()
+park.run()
