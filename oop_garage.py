@@ -22,8 +22,8 @@
 # - parking_spaces -> list
 # - current_ticket -> dictionary
 
+from time import sleep
+
 class Parking_garage():
 
     def __init__():
-
-
